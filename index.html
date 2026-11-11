@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quran Diary - Quran Guide Online</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7f6; padding: 20px; }
+  .container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  h2 { text-align: center; color: #1a5e3a; }
+  label { display: block; margin-top: 15px; font-weight: bold; color: #333; }
+  input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+  button { margin-top: 20px; width: 100%; padding: 12px; background: #1a5e3a; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+  button:hover { background: #144a2e; }
+  .admin-note { font-size: 12px; color: #888; text-align: center; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📖 Daily Diary - Quran Guide</h2>
+
+  <form id="diaryForm">
+    <label>Student Name (طالب علم کا نام)</label>
+    <select id="studentName" required>
+      <option value="">-- Select Student --</option>
+      <option value="Ahsen">Ahsen</option>
+      <option value="Harisb">Harisb</option>
+      <option value="Zara (Zarah)">Zara (Zarah)</option>
+      <option value="Sarah (Sara)">Sarah (Sara)</option>
+    </select>
+
+    <label>Date (تاریخ)</label>
+    <input type="date" id="date" required>
+
+    <label>Surah / Lesson (سورۃ / سبق)</label>
+    <select id="surah" required>
+      <option value="">-- Select Surah --</option>
+      <option value="Surah Lail">Surah Lail</option>
+      <option value="Surah Shams">Surah Shams</option>
+      <option value="Surah Balad">Surah Balad</option>
+      <option value="Surah Fajr">Surah Fajr</option>
+      <option value="Surah Ghashiya">Surah Ghashiya</option>
+      <option value="Surah A'la">Surah A'la</option>
+      <option value="Surah Tariq">Surah Tariq</option>
+      <option value="Surah Buruj">Surah Buruj</option>
+      <option value="Surah Inshiqaq">Surah Inshiqaq</option>
+      <option value="Surah Mutaffifin">Surah Mutaffifin</option>
+      <option value="Surah Infitar">Surah Infitar</option>
+      <option value="Surah Takwir">Surah Takwir</option>
+      <option value="Surah Abasa">Surah Abasa</option>
+      <option value="Surah Naziat">Surah Naziat</option>
+      <option value="Surah Naba">Surah Naba</option>
+      <option value="Surah Mulk">Surah Mulk</option>
+      <option value="Surah Qalam">Surah Qalam</option>
+      <option value="Surah Haqqah">Surah Haqqah</option>
+      <option value="Surah Ma'arij">Surah Ma'arij</option>
+      <option value="Surah Nuh">Surah Nuh</option>
+      <option value="Surah Jinn">Surah Jinn</option>
+      <option value="Surah Muzzammil">Surah Muzzammil</option>
+      <option value="Surah Muddassir">Surah Muddassir</option>
+      <option value="Surah Qiyamah">Surah Qiyamah</option>
+      <option value="Surah Insan">Surah Insan</option>
+      <option value="Surah Mursalat">Surah Mursalat</option>
+      <option value="Surah Dahr">Surah Dahr</option>
+      <option value="Surah Qadr">Surah Qadr</option>
+      <option value="Surah Bayyinah">Surah Bayyinah</option>
+      <option value="Surah Zalzalah">Surah Zalzalah</option>
+      <option value="Surah Adiyat">Surah Adiyat</option>
+      <option value="Surah Qari'ah">Surah Qari'ah</option>
+      <option value="Surah Takathur">Surah Takathur</option>
+      <option value="Surah Asr">Surah Asr</option>
+      <option value="Surah Humazah">Surah Humazah</option>
+      <option value="Surah Fil">Surah Fil</option>
+      <option value="Surah Quraish">Surah Quraish</option>
+      <option value="Surah Ma'un">Surah Ma'un</option>
+      <option value="Surah Kausar">Surah Kausar</option>
+      <option value="Surah Kafirun">Surah Kafirun</option>
+      <option value="Surah Nasr">Surah Nasr</option>
+      <option value="Surah Lahab">Surah Lahab</option>
+      <option value="Surah Ikhlas">Surah Ikhlas</option>
+      <option value="Surah Falaq">Surah Falaq</option>
+      <option value="Surah Naas">Surah Naas</option>
+      <option value="Surah Yaseen">Surah Yaseen</option>
+      <option value="Surah Rehman">Surah Rehman</option>
+      <option value="Surah Kahaf">Surah Kahaf</option>
+    </select>
+
+    <label>Pages / Ayahs Covered (صفحات / آیات)</label>
+    <input type="text" id="pages" placeholder="e.g., Page 5-7 or Ayah 1-10">
+
+    <label>Remarks / Notes (نوٹ)</label>
+    <textarea id="remarks" rows="2" placeholder="Optional notes..."></textarea>
+
+    <button type="submit" id="submitBtn">✅ Submit Record</button>
+  </form>
+
+  <p class="admin-note">🔒 Only Admin can edit form settings.</p>
+</div>
+
+<script>
+// AAPKA GOOGLE SCRIPT URL YAHAN SET HAI
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzggMZkCkVBZmWPbTn6Mf-DwET4CSscX4MzXIEOFb6nw99FK2XH9sWksXsJpKDKgMTtIA/exec"; 
+
+document.getElementById('diaryForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const btn = document.getElementById('submitBtn');
+  btn.innerText = "Submitting...";
+  btn.disabled = true;
+
+  const formData = {
+    studentName: document.getElementById('studentName').value,
+    date: document.getElementById('date').value,
+    surah: document.getElementById('surah').value,
+    pages: document.getElementById('pages').value,
+    remarks: document.getElementById('remarks').value
+  };
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  })
+  .then(() => {
+    alert("✅ Record successfully submit ho gaya!");
+    document.getElementById('diaryForm').reset();
+    btn.innerText = "✅ Submit Record";
+    btn.disabled = false;
+  })
+  .catch(error => {
+    alert("❌ Error aya, please dobara try karein.");
+    btn.innerText = "✅ Submit Record";
+    btn.disabled = false;
+  });
+});
+
+// ADMIN PASSWORD CHECK (633547)
+document.body.addEventListener('dblclick', function() {
+  let pass = prompt("Enter Admin Password:");
+  if (pass === "633547") {
+    alert("✅ Welcome Admin! Aap ka data Google Sheet mein save ho raha hai.");
+    window.open("https://docs.google.com/spreadsheets/", "_blank");
+  } else if (pass !== null) {
+    alert("❌ Galat Password!");
+  }
+});
+</script>
+</body>
+</html>
