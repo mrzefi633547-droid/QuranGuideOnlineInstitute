@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quran Guide Online Institute — Student Daily Diary</title>
-<!-- Exact Fonts from Arena -->
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -61,7 +60,7 @@
   .student-avatar { width: 45px; height: 45px; background: #fcecd9; color: #a16207; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; margin-right: 15px; }
   .student-info { flex: 1; }
   .student-info h4 { font-size: 16px; color: var(--primary); margin-bottom: 2px; font-family: 'Merriweather', serif; }
-  .student-info p { font-size: 14px; color: var(--text-muted); }
+  .student-info p { font-size: 14px; color: var(--text-muted); font-family: 'Segoe UI', Tahoma, sans-serif; }
   .radio-circle { width: 22px; height: 22px; border: 1px solid var(--border); border-radius: 50%; background: white; }
   .student-option input[type="radio"]:checked + .student-card .radio-circle { border: 6px solid var(--primary); }
 
@@ -76,15 +75,15 @@
   .toggle-btn.active-yes { background: var(--input-bg); color: var(--primary); font-weight: 700; }
   .toggle-btn.active-no { background: var(--input-bg); color: var(--text-muted); }
 
-  /* Surah Practice Checkboxes */
+  /* Checkboxes Grid (Surah & Kalimas) */
   .surah-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
   .surah-item { border: 1px solid var(--border); padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; background: var(--card-bg); transition: 0.2s; }
   .surah-item input { display: none; }
   .surah-check { width: 20px; height: 20px; border: 1px solid var(--border); border-radius: 4px; background: var(--input-bg); flex-shrink: 0; }
   .surah-item input:checked + .surah-check { background: var(--primary); border-color: var(--primary); position: relative; }
   .surah-item input:checked + .surah-check::after { content: '✓'; color: white; position: absolute; top: -2px; left: 4px; font-size: 14px; font-weight: bold; }
-  .surah-text h4 { font-size: 14px; color: var(--primary); font-family: 'Merriweather', serif; margin-bottom: 2px; }
-  .surah-text p { font-size: 13px; color: var(--text-muted); font-family: 'Segoe UI', Tahoma, sans-serif; }
+  .surah-text h4 { font-size: 14px; color: var(--primary); font-family: 'Merriweather', serif; margin-bottom: 2px; line-height: 1.2; }
+  .surah-text p { font-size: 11px; color: var(--text-muted); font-family: 'Segoe UI', Tahoma, sans-serif; }
   
   .not-practiced { border: 1px dashed var(--border); background: transparent; }
   .not-practiced .surah-text h4 { font-family: 'Poppins', sans-serif; font-size: 13px; color: var(--text-muted); }
@@ -118,7 +117,7 @@
       <p>STUDENT MODE</p>
     </div>
   </div>
-  <button class="login-btn">🔒 Teacher login</button>
+  <button class="login-btn" onclick="teacherLogin()">🔒 Teacher login</button>
 </div>
 
 <!-- Header -->
@@ -153,7 +152,6 @@
         </div>
       </label>
 
-      <!-- Changed Harisb to Haris -->
       <label class="student-option">
         <input type="radio" name="student" value="Haris">
         <div class="student-card">
@@ -166,6 +164,7 @@
         </div>
       </label>
 
+      <!-- Sarah Urdu name fixed to سارہ -->
       <label class="student-option">
         <input type="radio" name="student" value="Sarah">
         <div class="student-card">
@@ -277,24 +276,10 @@
       </div>
     </div>
 
-    <!-- 3. Daily Duas -->
+    <!-- 3. Surah Practice (Moved from 4) -->
     <div class="card">
       <div class="card-header">
         <div class="step-circle">3</div>
-        <div class="step-title">
-          <h3>Daily duas & masnun adhkar</h3>
-          <p>Which daily duas were recited today?</p>
-        </div>
-      </div>
-      <div class="form-group">
-        <textarea id="duas" rows="3" placeholder="e.g. Dua after waking up, before sleeping, before & after meals..."></textarea>
-      </div>
-    </div>
-
-    <!-- 4. Surah Practice -->
-    <div class="card">
-      <div class="card-header">
-        <div class="step-circle">4</div>
         <div class="step-title">
           <h3>Surah practice</h3>
           <p>Select every surah that was practiced today.</p>
@@ -337,24 +322,6 @@
             <p>SURAH LAIL TO NAAS</p>
           </div>
         </label>
-
-        <label class="surah-item" style="grid-column: span 2;">
-          <input type="checkbox" name="surah" value="6 Kalimas">
-          <div class="surah-check"></div>
-          <div class="surah-text">
-            <h4>چھ کلمے</h4>
-            <p>6 KALIMAS</p>
-          </div>
-        </label>
-
-        <label class="surah-item" style="grid-column: span 2;">
-          <input type="checkbox" name="surah" value="Taleem ul Islam">
-          <div class="surah-check"></div>
-          <div class="surah-text">
-            <h4>تعلیم الاسلام</h4>
-            <p>TALEEM UL ISLAM</p>
-          </div>
-        </label>
       </div>
 
       <label class="surah-item not-practiced">
@@ -366,10 +333,91 @@
       </label>
     </div>
 
-    <!-- 5. Good Deed -->
+    <!-- 4. Kalimas (New Section) -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step-circle">4</div>
+        <div class="step-title">
+          <h3>6 Kalimas</h3>
+          <p>Select the Kalimas recited today.</p>
+        </div>
+      </div>
+      
+      <div class="surah-grid">
+        <label class="surah-item">
+          <input type="checkbox" name="kalima" value="1st Kalima (Tayyab) - Pak">
+          <div class="surah-check"></div>
+          <div class="surah-text">
+            <h4>پہلا کلمہ طیب</h4>
+            <p>1st Kalima (Tayyab) - Pak</p>
+          </div>
+        </label>
+        
+        <label class="surah-item">
+          <input type="checkbox" name="kalima" value="2nd Kalima (Shahadat) - Gawahi">
+          <div class="surah-check"></div>
+          <div class="surah-text">
+            <h4>دوسرا کلمہ شہادت</h4>
+            <p>2nd Kalima (Shahadat) - Gawahi</p>
+          </div>
+        </label>
+
+        <label class="surah-item">
+          <input type="checkbox" name="kalima" value="3rd Kalima (Tamjeed) - Buzurgi">
+          <div class="surah-check"></div>
+          <div class="surah-text">
+            <h4>تیسرا کلمہ تمجید</h4>
+            <p>3rd Kalima (Tamjeed) - Buzurgi</p>
+          </div>
+        </label>
+
+        <label class="surah-item">
+          <input type="checkbox" name="kalima" value="4th Kalima (Tauheed) - Yakshtagi">
+          <div class="surah-check"></div>
+          <div class="surah-text">
+            <h4>چوتھا کلمہ توحید</h4>
+            <p>4th Kalima (Tauheed) - Yakshtagi</p>
+          </div>
+        </label>
+
+        <label class="surah-item">
+          <input type="checkbox" name="kalima" value="5th Kalima (Astaghfar) - Maafi Mangna">
+          <div class="surah-check"></div>
+          <div class="surah-text">
+            <h4>پانچواں کلمہ استغفار</h4>
+            <p>5th Kalima (Astaghfar) - Maafi Mangna</p>
+          </div>
+        </label>
+
+        <label class="surah-item">
+          <input type="checkbox" name="kalima" value="6th Kalima (Radd-e-Kufr) - Kufr se inkar">
+          <div class="surah-check"></div>
+          <div class="surah-text">
+            <h4>چھٹا کلمہ رد کفر</h4>
+            <p>6th Kalima (Radd-e-Kufr) - Kufr se inkar</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- 5. Daily Duas (Moved from 3) -->
     <div class="card">
       <div class="card-header">
         <div class="step-circle">5</div>
+        <div class="step-title">
+          <h3>Daily duas & masnun adhkar</h3>
+          <p>Which daily duas were recited today?</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea id="duas" rows="3" placeholder="e.g. Dua after waking up, before sleeping, before & after meals..."></textarea>
+      </div>
+    </div>
+
+    <!-- 6. Good Deed -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step-circle">6</div>
         <div class="step-title">
           <h3>Good deed</h3>
           <p>Did the student do a good deed today?</p>
@@ -393,7 +441,7 @@
       </div>
     </div>
 
-    <!-- 6. Parent / Guardian details (Moved to End as requested) -->
+    <!-- 7. Parent / Guardian details -->
     <div class="card">
       <div class="card-header">
         <div style="width: 35px; flex-shrink: 0;"></div>
@@ -439,17 +487,134 @@
       </div>
     </div>
 
-    <!-- Submit Button -->
     <button type="submit" class="submit-btn" id="submitBtn">
       💬 Submit & send report
     </button>
   </form>
 
-  <!-- Bottom Info -->
   <div class="bottom-info">
     <div class="bottom-logo">🕌</div>
     <strong>Quran Guide Online Institute</strong>
     <p>This device is locked to the student form. Navigation, settings and saved entries need the admin PIN.</p>
     
     <div style="margin-top: 15px;">
-      <p>Teacher? Log in with your PIN to op
+      <p>Teacher? Log in with your PIN to open the admin panel.</p>
+      <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+         <a href="https://wa.me/923042840633" target="_blank" style="text-decoration: none; color: var(--primary); border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; font-weight: 600; display: flex; align-items: center; gap: 5px;"><span style="color: green;">🟢</span> +92 304 2840633</a>
+         <button onclick="teacherLogin()" style="background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 20px; font-weight: 600; cursor: pointer;">🔒 Teacher login</button>
+      </div>
+    </div>
+    <p style="margin-top: 20px;">© 2026 Quran Guide Online Institute</p>
+  </div>
+
+</div>
+
+<script>
+  // Set today's date by default
+  document.getElementById('date').valueAsDate = new Date();
+
+  // Toggle button logic for prayers
+  function toggleBtn(btn, type) {
+    let parent = btn.parentElement;
+    let btns = parent.getElementsByClassName('toggle-btn');
+    for(let b of btns) { b.classList.remove('active-yes', 'active-no'); }
+    if(type === 'yes') { btn.classList.add('active-yes'); } 
+    else { btn.classList.add('active-no'); }
+  }
+
+  // Teacher Login Function
+  function teacherLogin() {
+    let pass = prompt("Enter Admin Password:");
+    if (pass === "633547") {
+      alert("✅ Welcome Admin! Aap ka data Google Sheet mein save ho raha hai.");
+      window.open("https://docs.google.com/spreadsheets/", "_blank");
+    } else if (pass !== null) {
+      alert("❌ Galat Password!");
+    }
+  }
+
+  // Form Submission
+  document.getElementById('diaryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const btn = document.getElementById('submitBtn');
+    btn.innerHTML = "⏳ Submitting...";
+    btn.disabled = true;
+
+    // Collecting Checked Surahs
+    let selectedSurahs = [];
+    document.querySelectorAll('input[name="surah"]:checked').forEach((cb) => {
+      selectedSurahs.push(cb.value);
+    });
+
+    // Collecting Checked Kalimas
+    let selectedKalimas = [];
+    document.querySelectorAll('input[name="kalima"]:checked').forEach((cb) => {
+      selectedKalimas.push(cb.value);
+    });
+
+    // Collecting Prayers
+    let prayers = {};
+    let prayerNames = ['Fajr', 'Zuhr', 'Asr', 'Maghrib', 'Isha'];
+    let prayerElements = document.querySelectorAll('.prayer-row');
+    prayerElements.forEach((row, index) => {
+       let activeBtn = row.querySelector('.toggle-btn.active-yes');
+       prayers[prayerNames[index]] = activeBtn ? 'Yes' : 'No';
+    });
+
+    // Good Deed Answer
+    let goodDeedAns = document.querySelector('input[name="goodDeedAnswer"]:checked');
+    
+    // Student Name
+    let studentSelected = document.querySelector('input[name="student"]:checked');
+
+    if(!studentSelected) {
+        alert("Please select a student!"); 
+        btn.innerHTML = "💬 Submit & send report"; btn.disabled = false;
+        return;
+    }
+
+    const formData = {
+      studentName: studentSelected.value,
+      date: document.getElementById('date').value,
+      fajr: prayers['Fajr'],
+      zuhr: prayers['Zuhr'],
+      asr: prayers['Asr'],
+      maghrib: prayers['Maghrib'],
+      isha: prayers['Isha'],
+      surahs: selectedSurahs.join(', '),
+      kalimas: selectedKalimas.join(', '), // Newly added Kalimas data
+      duas: document.getElementById('duas').value,
+      goodDeed: document.getElementById('goodDeed').value,
+      goodDeedAnswer: goodDeedAns ? goodDeedAns.value : '',
+      parentName: document.getElementById('parentName').value,
+      whatsapp: document.getElementById('whatsapp').value,
+      email: document.getElementById('email').value,
+      country: document.getElementById('country').value,
+      city: document.getElementById('city').value
+    };
+
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzggMZkCkVBZmWPbTn6Mf-DwET4CSscX4MzXIEOFb6nw99FK2XH9sWksXsJpKDKgMTtIA/exec"; 
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(() => {
+      alert("✅ Record successfully submit ho gaya!");
+      document.getElementById('diaryForm').reset();
+      document.getElementById('date').valueAsDate = new Date(); 
+      btn.innerHTML = "💬 Submit & send report";
+      btn.disabled = false;
+    })
+    .catch(error => {
+      alert("❌ Error aya, please dobara try karein.");
+      btn.innerHTML = "💬 Submit & send report";
+      btn.disabled = false;
+    });
+  });
+</script>
+</body>
+</html>
