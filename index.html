@@ -164,7 +164,6 @@
         </div>
       </label>
 
-      <!-- Sarah Urdu name fixed to سارہ -->
       <label class="student-option">
         <input type="radio" name="student" value="Sarah">
         <div class="student-card">
@@ -177,13 +176,14 @@
         </div>
       </label>
 
+      <!-- Zarah Urdu changed to زارہ -->
       <label class="student-option">
         <input type="radio" name="student" value="Zarah">
         <div class="student-card">
           <div class="student-avatar">Z</div>
           <div class="student-info">
             <h4>Zarah</h4>
-            <p>زارا</p>
+            <p>زارہ</p>
           </div>
           <div class="radio-circle"></div>
         </div>
@@ -276,7 +276,7 @@
       </div>
     </div>
 
-    <!-- 3. Surah Practice (Moved from 4) -->
+    <!-- 3. Surah Practice -->
     <div class="card">
       <div class="card-header">
         <div class="step-circle">3</div>
@@ -333,7 +333,7 @@
       </label>
     </div>
 
-    <!-- 4. Kalimas (New Section) -->
+    <!-- 4. Kalimas -->
     <div class="card">
       <div class="card-header">
         <div class="step-circle">4</div>
@@ -400,7 +400,7 @@
       </div>
     </div>
 
-    <!-- 5. Daily Duas (Moved from 3) -->
+    <!-- 5. Daily Duas -->
     <div class="card">
       <div class="card-header">
         <div class="step-circle">5</div>
@@ -451,14 +451,16 @@
         </div>
       </div>
 
+      <!-- Added 'required' here -->
       <div class="form-group">
         <label>PARENT / GUARDIAN NAME</label>
-        <input type="text" id="parentName" placeholder="e.g. Muhammad Aslam">
+        <input type="text" id="parentName" placeholder="e.g. Muhammad Aslam" required>
       </div>
 
+      <!-- Added 'required' here -->
       <div class="form-group">
         <label>WHATSAPP NUMBER (Worldwide)</label>
-        <input type="tel" id="whatsapp" placeholder="e.g. +92 304 2840633 or +1 234 567 8900">
+        <input type="tel" id="whatsapp" placeholder="e.g. +92 304 2840633 or +1 234 567 8900" required>
       </div>
 
       <div class="form-group">
@@ -541,19 +543,16 @@
     btn.innerHTML = "⏳ Submitting...";
     btn.disabled = true;
 
-    // Collecting Checked Surahs
     let selectedSurahs = [];
     document.querySelectorAll('input[name="surah"]:checked').forEach((cb) => {
       selectedSurahs.push(cb.value);
     });
 
-    // Collecting Checked Kalimas
     let selectedKalimas = [];
     document.querySelectorAll('input[name="kalima"]:checked').forEach((cb) => {
       selectedKalimas.push(cb.value);
     });
 
-    // Collecting Prayers
     let prayers = {};
     let prayerNames = ['Fajr', 'Zuhr', 'Asr', 'Maghrib', 'Isha'];
     let prayerElements = document.querySelectorAll('.prayer-row');
@@ -562,10 +561,7 @@
        prayers[prayerNames[index]] = activeBtn ? 'Yes' : 'No';
     });
 
-    // Good Deed Answer
     let goodDeedAns = document.querySelector('input[name="goodDeedAnswer"]:checked');
-    
-    // Student Name
     let studentSelected = document.querySelector('input[name="student"]:checked');
 
     if(!studentSelected) {
@@ -583,7 +579,7 @@
       maghrib: prayers['Maghrib'],
       isha: prayers['Isha'],
       surahs: selectedSurahs.join(', '),
-      kalimas: selectedKalimas.join(', '), // Newly added Kalimas data
+      kalimas: selectedKalimas.join(', '),
       duas: document.getElementById('duas').value,
       goodDeed: document.getElementById('goodDeed').value,
       goodDeedAnswer: goodDeedAns ? goodDeedAns.value : '',
